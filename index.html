@@ -25,7 +25,7 @@
         <div class="grid grid-cols-3 gap-8">
             <div class="bg-[#FFFFFF] p-4 rounded-lg">
                 <p>Total</p>
-                <p id="totol">8</p>
+                <p id="total">0</p>
             </div>
             <div class="bg-[#FFFFFF] p-4 rounded-lg">
                 <p>Interview</p>
@@ -41,12 +41,12 @@
     <hr class="my-5">
     <main class="w-[80%] mx-auto">
         <div class="mb-6">
-            <button class="bg-[#3B82F6] px-5 py-2 text-[#FFFFFF] rounded-lg" id="all-filter-btn">All</button>
-            <button class="bg-[#FFFFFF] px-5 py-2 rounded-lg"id="interview-filter-btn">Interview</button>
-            <button class="bg-[#FFFFFF] px-5 py-2 rounded-lg" id="rejected-filter-btn">Rejected</button>
+            <button onclick="toggleStyle('all-filter-btn')" class="bg-[#3B82F6] px-5 py-2 text-[#FFFFFF] rounded-lg" id="all-filter-btn">All</button>
+            <button onclick="toggleStyle('interview-filter-btn')" class="bg-[#FFFFFF] px-5 py-2 rounded-lg"id="interview-filter-btn">Interview</button>
+            <button onclick="toggleStyle('rejected-filter-btn')"  class="bg-[#FFFFFF] px-5 py-2 rounded-lg" id="rejected-filter-btn">Rejected</button>
         </div>
 
-        <section id="allCard">
+        <section id="allCards">
             <!-- card1 -->
              <div class="card flex justify-between bg-[#FFFFFF] p-4 rounded-lg mb-2">
                 <!-- main part 1 -->
@@ -274,5 +274,7 @@
         </section>
 
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

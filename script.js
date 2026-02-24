@@ -1,5 +1,6 @@
 let interviewList =[];
 let rejectedList =[];
+let currentStatus ='all'
 
 let total = document.getElementById('total');
 let interview = document.getElementById('interview');
@@ -34,6 +35,7 @@ function toggleStyle(id){
     rejectedFilterBtn.classList.add('bg-[#FFFFFF]','text-black')
 
     const selected = document.getElementById(id)
+    currentStatus = id
     
     selected.classList.remove('bg-[#FFFFFF]','text-black')
     selected.classList.add('bg-[#3B82F6]','text-[#FFFFFF]')
@@ -41,19 +43,25 @@ function toggleStyle(id){
     if(id=='interview-filter-btn'){
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden');
+        renderThriving()
     }else if(id=='all-filter-btn'){
         allCardSection.classList.remove('hidden');
         filterSection.classList.add('hidden')
+    }
+    else if(id=='rejected-filter-btn'){
+        allCardSection.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderRejected()
     }
 }
 
 mainContainer.addEventListener('click',function(event){
     if(event.target.classList.contains('interview-btn'))
     {
-        // console.log(event.target.parentNode.parentNode);
+        
     const parentNode = event.target.parentNode.parentNode;
     const companyName = parentNode.querySelector('.companyName').innerText;
-    // console.log(companyName);
+   
     const roleName = parentNode.querySelector('.roleName').innerText;
     const jobInfo = parentNode.querySelector('.job-info')
     const status = parentNode.querySelector('.status').innerText
@@ -74,8 +82,46 @@ mainContainer.addEventListener('click',function(event){
     if(!companyExist){
         interviewList.push(cardInfo)
     }
+    rejectedList=rejectedList.filter(item=>item.companyName!=cardInfo.companyName)
+
     calculateCount()
-    renderThriving()
+    if(currentStatus=='rejected-filter-btn')
+    {renderRejected()}
+    }
+    else if(event.target.classList.contains('rejected-btn'))
+    {
+        
+    const parentNode = event.target.parentNode.parentNode;
+    const companyName = parentNode.querySelector('.companyName').innerText;
+   
+    const roleName = parentNode.querySelector('.roleName').innerText;
+    const jobInfo = parentNode.querySelector('.job-info')
+    const status = parentNode.querySelector('.status').innerText
+    const notes = parentNode.querySelector('.notes').innerText
+    // const interviewBtn = parentNode.querySelector('.interview-btn')
+    // const rejectedBtn = parentNode.querySelector('.rejected-btn')
+   parentNode.querySelector('.status').innerText='REJECTED'
+    const cardInfo ={companyName,
+        roleName,
+        jobInfo,
+        status:'REJECTED',
+        notes
+    }
+    
+    const companyExist=
+    rejectedList.find(item=> item.companyName==cardInfo.companyName);
+   
+    if(!companyExist){
+        rejectedList.push(cardInfo)
+    }
+
+    interviewList=interviewList.filter(item=>item.companyName!=cardInfo.companyName);
+    if(currentStatus=="interview-filter-btn"){
+        renderThriving();
+    }
+
+    calculateCount()
+    // renderRejected()
     }
 })
     
@@ -83,7 +129,7 @@ mainContainer.addEventListener('click',function(event){
         filterSection.innerHTML=''
 
         for(let thrive of interviewList){
-            console.log(thrive)
+            // console.log(thrive)
              let div =document.createElement('div');
              div.className='card flex justify-between bg-[#FFFFFF] p-4 rounded-lg mb-2'
              div.innerHTML=`    <div class="space-y-2">
@@ -97,6 +143,43 @@ mainContainer.addEventListener('click',function(event){
                     <!-- part2 -->
                      
                     <p class="status bg-[#EEF4FF] w-[113px] p-2">${thrive.status}</p>
+                     <p class="notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+
+                     <div>
+                        <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn border-2 border-[#EF4444] text-[#EF4444] p-2 font-semibold">Rejected</button>
+                     </div>
+                </div>
+                <!-- main part 2 -->
+                <div>
+                    <button><img src="Group 1.png" alt=""></button>
+                    
+                </div>
+             `
+             filterSection.appendChild(div)
+
+    }
+}
+
+   function renderRejected(){
+        filterSection.innerHTML=''
+
+        for(let reject of rejectedList){
+            // console.log(reject)
+             let div =document.createElement('div');
+             div.className='card flex justify-between bg-[#FFFFFF] p-4 rounded-lg mb-2'
+             div.innerHTML=`    <div class="space-y-2">
+                    <!-- part1 -->
+                    <div>
+                        <p class="companyName">${reject.companyName}</p>
+                        <p class="roleName mb-4 text-[#64748B]">React Native Developer</p>
+                        <p class="job-info text-[#64748B]">Remote . Full-time . $130,000 - $175,000
+                    </p>
+                    </div>
+                    <!-- part2 -->
+                     
+                    <p class="status bg-[#EEF4FF] w-[113px] p-2">${reject.status}</p>
                      <p class="notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     
 

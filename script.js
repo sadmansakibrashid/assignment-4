@@ -63,11 +63,10 @@ mainContainer.addEventListener('click',function(event){
     const companyName = parentNode.querySelector('.companyName').innerText;
    
     const roleName = parentNode.querySelector('.roleName').innerText;
-    const jobInfo = parentNode.querySelector('.job-info')
+    const jobInfo = parentNode.querySelector('.job-info').innerText
     const status = parentNode.querySelector('.status').innerText
     const notes = parentNode.querySelector('.notes').innerText
-    // const interviewBtn = parentNode.querySelector('.interview-btn')
-    // const rejectedBtn = parentNode.querySelector('.rejected-btn')
+    
    parentNode.querySelector('.status').innerText='INTERVIEW'
     const cardInfo ={companyName,
         roleName,
@@ -95,7 +94,7 @@ mainContainer.addEventListener('click',function(event){
     const companyName = parentNode.querySelector('.companyName').innerText;
    
     const roleName = parentNode.querySelector('.roleName').innerText;
-    const jobInfo = parentNode.querySelector('.job-info')
+    const jobInfo = parentNode.querySelector('.job-info').innerText
     const status = parentNode.querySelector('.status').innerText
     const notes = parentNode.querySelector('.notes').innerText
     // const interviewBtn = parentNode.querySelector('.interview-btn')
@@ -152,14 +151,14 @@ if(interviewList.length === 0){
                     <!-- part1 -->
                     <div>
                         <p class="companyName">${thrive.companyName}</p>
-                        <p class="roleName mb-4 text-[#64748B]">React Native Developer</p>
-                        <p class="job-info text-[#64748B]">Remote . Full-time . $130,000 - $175,000
+                        <p class="roleName mb-4 text-[#64748B]">${thrive.roleName}</p>
+                        <p class="job-info text-[#64748B]">${thrive.jobInfo}
                     </p>
                     </div>
                     <!-- part2 -->
                      
                     <p class="status bg-[#EEF4FF] w-[113px] p-2">${thrive.status}</p>
-                     <p class="notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                     <p class="notes text-[#323B49]">${thrive.notes}</p>
                     
 
                      <div>
@@ -201,14 +200,14 @@ if(interviewList.length === 0){
                     <!-- part1 -->
                     <div>
                         <p class="companyName">${reject.companyName}</p>
-                        <p class="roleName mb-4 text-[#64748B]">React Native Developer</p>
-                        <p class="job-info text-[#64748B]">Remote . Full-time . $130,000 - $175,000
+                        <p class="roleName mb-4 text-[#64748B]">${reject.roleName}</p>
+                        <p class="job-info text-[#64748B]">${reject.jobInfo}
                     </p>
                     </div>
                     <!-- part2 -->
                      
                     <p class="status bg-[#EEF4FF] w-[113px] p-2">${reject.status}</p>
-                     <p class="notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                     <p class="notes text-[#323B49]">${reject.notes}</p>
                     
 
                      <div>

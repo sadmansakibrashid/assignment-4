@@ -60,20 +60,21 @@ mainContainer.addEventListener('click',function(event){
     const notes = parentNode.querySelector('.notes').innerText
     // const interviewBtn = parentNode.querySelector('.interview-btn')
     // const rejectedBtn = parentNode.querySelector('.rejected-btn')
-    
+   parentNode.querySelector('.status').innerText='INTERVIEW'
     const cardInfo ={companyName,
         roleName,
         jobInfo,
-        status,
+        status:'INTERVIEW',
         notes
     }
     
     const companyExist=
     interviewList.find(item=> item.companyName==cardInfo.companyName);
-    parentNode.querySelector('.status').innerText='INTERVIEW'
+   
     if(!companyExist){
         interviewList.push(cardInfo)
     }
+    calculateCount()
     renderThriving()
     }
 })
@@ -95,7 +96,7 @@ mainContainer.addEventListener('click',function(event){
                     </div>
                     <!-- part2 -->
                      
-                    <p class="status bg-[#EEF4FF] w-[113px] p-2">Not Applied</p>
+                    <p class="status bg-[#EEF4FF] w-[113px] p-2">${thrive.status}</p>
                      <p class="notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     
 

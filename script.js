@@ -128,6 +128,22 @@ mainContainer.addEventListener('click',function(event){
     function renderThriving(){
         filterSection.innerHTML=''
 
+
+if(interviewList.length === 0){
+        filterSection.innerHTML = `
+          
+        <div class="bg-[#FFFFFF] p-10 rounded-lg text-center">
+                <img class="mx-auto mb-4 w-12" src="jobs.png" alt="">
+                <h2 class="text-xl font-semibold text-[#002C5C]">No jobs available</h2>
+                <p class="text-[#64748B]">Check back soon for new job opportunities</p>
+            </div>
+        `;
+        
+    }
+
+
+
+
         for(let thrive of interviewList){
             // console.log(thrive)
              let div =document.createElement('div');
@@ -164,6 +180,18 @@ mainContainer.addEventListener('click',function(event){
 
    function renderRejected(){
         filterSection.innerHTML=''
+
+    if(rejectedList.length === 0){
+        filterSection.innerHTML = `
+            <div class="bg-[#FFFFFF] p-10 rounded-lg text-center">
+                <img class="mx-auto mb-4 w-12" src="jobs.png" alt="">
+                <h2 class="text-xl font-semibold text-[#002C5C]">No jobs available</h2>
+                <p class="text-[#64748B]">Check back soon for new job opportunities</p>
+            </div>
+        `;
+        return;
+    }
+
 
         for(let reject of rejectedList){
             // console.log(reject)
